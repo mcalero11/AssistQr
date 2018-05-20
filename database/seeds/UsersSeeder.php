@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('Secret'),
             'birthdate' => '1995/08/28',
             'timeZone' => -0,
-            'is_instructor' => 1,
+            'is_instructor' => true,
         ]);
         User::create([
             'name' => 'Marvin',
@@ -29,7 +29,7 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('Secret'),
             'birthdate' => '1997/07/28',
             'timeZone' => -6,
-            'is_instructor' => 1,
+            'is_instructor' => true,
         ]);
         User::create([
             'name' => 'Erick',
@@ -38,8 +38,10 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('Secret'),
             'birthdate' => '1997/04/18',
             'timeZone' => -6,
-            'is_instructor' => 1,
+            'is_instructor' => true,
         ]);
+
+
 
         // Factories
         factory(User::class)->times(97)->create();

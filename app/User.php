@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'lastName', 'email', 'password', 'birthdate', 'timeZone', 'is_instructor'
+        'name', 'lastName', 'email', 'password', 'birthdate', 'timeZone',
     ];
 
     /**
@@ -26,4 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $casts = [
+      'is_instructor' => 'boolean',
+      'active' => 'boolean',
+    ];
+
+    public function courses(){
+        return $this->belongsToMany('App\Course')->withPivot('type','active')->withTimestamps();
+    }
+
+    public function classSession(){
+        return $this->belongsToMany('App\ClassSession','attendances')->as('attendace')->withPivot('status','comments')->withTimestamps();
+    }
 }
