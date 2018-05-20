@@ -16,8 +16,8 @@ class CreateCourseTable extends Migration
         Schema::create('course', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedTinyInteger('lateAfterTo');
-            $table->unsignedTinyInteger('outOfTimeAfterTo');
+            $table->unsignedTinyInteger('lateAfterTo')->default(10);
+            $table->unsignedTinyInteger('outOfTimeAfterTo')->default(30);
             $table->boolean('active')->default(1);
             $table->timestamps();
         });
