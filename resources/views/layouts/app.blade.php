@@ -19,6 +19,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- flatpicker -->
+
+
+
 </head>
 <body>
     <div id="app">
@@ -55,6 +60,13 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    @if(Auth::user()->id === 1 || Auth::user()->id === 2 || Auth::user()->id === 3)
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            Ver usuarios
+                                        </a>
+                                    @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -67,9 +79,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 bg-light">
             @yield('content')
         </main>
     </div>
+
 </body>
 </html>
