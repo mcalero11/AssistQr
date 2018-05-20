@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         //Vaciar tablas
         $this->VaciarTablas([
             'users',
-            'course',
+            'courses',
         ]);
 
         //Ejecutar Seeders

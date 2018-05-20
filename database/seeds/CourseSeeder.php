@@ -1,7 +1,7 @@
 <?php
 
+use App\Course;
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
 
 class CourseSeeder extends Seeder
 {
@@ -12,29 +12,18 @@ class CourseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('course')->insert([
-            'name' => 'Programación 1',
-            'lateAfterTo' => 5,
-            'outOfTimeAfterTo' => 15,
-            'created_at' => Carbon::now()->toDateTimeString(),
+        Course::create([
+            'name' => 'Programación 4',
+            'lateAfterTo' => 10,
+            'outOfTimeAfterTo' => 20,
         ]);
-        DB::table('course')->insert([
-            'name' => 'Base de datos 2',
-            'lateAfterTo' => 7,
-            'outOfTimeAfterTo' => 29,
-            'created_at' => Carbon::now()->toDateTimeString(),
+        Course::create([
+            'name' => 'Bases de Datos 2',
+            'lateAfterTo' => 17,
+            'outOfTimeAfterTo' => 32,
         ]);
-        DB::table('course')->insert([
-            'name' => 'Gramática',
-            'created_at' => Carbon::now()->toDateTimeString(),
-        ]);
-        DB::table('course')->insert([
-            'name' => 'Matemática 2',
-            'lateAfterTo' => 5,
-            'outOfTimeAfterTo' => 15,
-            'active' => 0,
-            'created_at' => Carbon::now()->toDateTimeString(),
-        ]);
+
+        factory(Course::class)->times(23)->create();
 
     }
 }

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->date('birthDate');
             $table->tinyInteger('timeZone');
             $table->boolean('active')->default(1);
-            $table->boolean('isInstructor')->default(0);
+            $table->boolean('is_instructor')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

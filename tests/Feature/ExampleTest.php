@@ -9,7 +9,7 @@ class ExampleTest extends TestCase
 {
     /**
      * A basic test example.
-     *
+     * @test
      * @return void
      */
     public function testBasicTest()
@@ -17,5 +17,7 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+
+        $response->assertSee('Laravel');
     }
 }
