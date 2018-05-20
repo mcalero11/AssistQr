@@ -15,11 +15,15 @@ class DatabaseSeeder extends Seeder
         $this->VaciarTablas([
             'users',
             'courses',
+            'timetables',
+            'course_user'
         ]);
 
         //Ejecutar Seeders
         $this->call(UsersSeeder::class);
         $this->call(CourseSeeder::class);
+        $this->call(TimetablesSeeder::class);
+        $this->call(UsersCoursesSeeder::class);
     }
 
     /**
