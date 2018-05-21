@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DateTime;
 
 class User extends Authenticatable
 {
@@ -42,5 +43,17 @@ class User extends Authenticatable
 
     public function CompleteName(){
         return $this->name . ' ' . $this->lastName;
+    }
+
+    /**
+     * Return the Age of the user
+     *
+     * @return mixed
+     */
+    public function Age(){
+        $birth = new  DateTime($this->birthDate);
+        $now = new DateTime();
+        $now = $now->diff($birth);
+        return $now->y;
     }
 }

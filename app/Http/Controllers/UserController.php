@@ -27,9 +27,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
-        if($id === 1 || $id === 2 || $id === 3){
-            return view('users',['users' => User::all(),]);
+        if($this->is_admin(Auth::id())){
+            return view('users',['users' => User::orderBy('id', 'ASC')->paginate(),]);
         }else{
             return redirect('home');
         }
@@ -40,7 +39,7 @@ class UserController extends Controller
         $user = User::find($id);
         if($user == null){
             return redirect('home');
-        }else if($user->id != Auth::id() && (Auth::id() != 1 && Auth::id() != 2 && Auth::id() != 3)){
+        }else if($user->id != Auth::id() && !$this->is_admin(Auth::id())){
             return redirect('home');
         }else{
             return view('profile', ['user' => $user]);
@@ -111,5 +110,19 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    /**
+     * Return true if is an admin
+     *
+     * @param int $id
+     * @return bool
+     */
+    private function is_admin(int $id){
+        if($id === 1 || $id === 2 || $id === 3){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
