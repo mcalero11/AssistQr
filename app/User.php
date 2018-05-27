@@ -39,4 +39,8 @@ class User extends Authenticatable
     public function classSession(){
         return $this->belongsToMany('App\ClassSession','attendances')->as('attendace')->withPivot('status','comments')->withTimestamps();
     }
+
+    public function CompleteName(){
+        return $this->name . ' ' . $this->lastName;
+    }
 }

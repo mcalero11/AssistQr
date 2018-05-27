@@ -60,11 +60,22 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
+                                    <a class="dropdown-item" href="{{ route('ProfileUser',Auth::id()) }}">
+                                        Perfil
+                                    </a>
+
                                     @if(Auth::user()->id === 1 || Auth::user()->id === 2 || Auth::user()->id === 3)
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                        <a class="dropdown-item" href="{{ route('AllUsers') }}">
                                             Ver usuarios
+                                        </a>
+                                    @endif
+
+                                    @if(!Auth::user()->is_instructor)
+                                        <a class="dropdown-item" href="#">
+                                            <button type="button" class="btn btn-outline-success">
+                                                Hazte Premium
+                                            </button>
                                         </a>
                                     @endif
 
